@@ -5,13 +5,7 @@ from django.core.management.base import BaseCommand
 from django.http import HttpResponseNotFound
 
 from pokemon.models import pokedexVersion
-
-
-def checkUrl(base_url):
-    response = requests.get(base_url)
-    if response.status_code == 200:
-        return response
-    return 'Error'
+from .command_utils import checkUrl
 
 
 def create_version(versions):
@@ -21,7 +15,7 @@ def create_version(versions):
         )
 
 
-def obtainPokedexVersions(records):
+def obtain_pokedex_versions(records):
     for record in records:
         response = checkUrl(record['url'])
         if response == 'Error':
@@ -45,5 +39,5 @@ class Command(BaseCommand):
         records = json.loads(response.text).get('results', None)
 
         if records:
-            obtainPokedexVersions(records)
+            obtain_pokedex_versions(records)
 
