@@ -19,3 +19,7 @@ I designed the function to pull data depending on the game ie blue, yellow and i
 
 Implementation:
 Basically I added one model which links to pokemon and the version, this should allow updates without destroying old data. so Gengar can have entrys from blue, red, gold etc. so i think this hits the requirement `so it's important your crawler can catch new Pokémon and update facts about existing ones`
+Data presentation can be done via the admin or the ui. The ui has two views a list and a detail. for the detail view i tried to emulate the origional pokedex screen for nostaligia reasons.
+
+Other Considerations:
+ I think the code is robust enough to scale, easily. I ran out of time or i would have like to have added pagination.
