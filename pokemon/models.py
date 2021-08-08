@@ -7,7 +7,7 @@ class pokemon(models.Model):
         unique=True,
     )
     pokedex_id = models.PositiveIntegerField()
-    sprite = models.ImageField(upload_to="sprite/",)
+    sprite = models.ImageField(upload_to="sprite/", blank=True)
     height = models.CharField(max_length=255)
     weight = models.CharField(max_length=255)
     type_one = models.CharField(max_length=255)
@@ -19,7 +19,8 @@ class pokemon(models.Model):
 
     def __str__(self):
         return self.name
-        
+
+
 class pokedexVersion(models.Model):
     name = models.CharField(
         max_length=255,
@@ -33,4 +34,4 @@ class pokedexVersion(models.Model):
 class pokemonVersionDescription(models.Model):
     pokemon = models.ForeignKey(pokemon, on_delete=models.CASCADE)
     version = models.ForeignKey(pokedexVersion, on_delete=models.CASCADE)
-
+    description = models.CharField(max_length=255, null=True, blank=True)

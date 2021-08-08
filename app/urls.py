@@ -3,9 +3,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
+from pokemon import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(
+        '',
+        views.PokemonListView.as_view(),
+        name='pokemon-list'
+    ),
+    path("pokemon/<int:pk>", views.PokemonDetailView.as_view(), name="pokemon_details"),
 ]
 
 

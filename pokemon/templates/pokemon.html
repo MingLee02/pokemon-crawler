@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static  %}
+
+{% block content %}
+    <div class="container">
+        <div id="pokemon-info-container">
+            <div id="basic-info-component">
+                <button id="toggle-arrows">&gt;&gt;</button>
+                <div id="basic-info-border">
+                    <div id="basic-info-container">
+                        <section id="top-section-container">
+                            <figure id="sprite-container">
+                                <img alt="Pokemon sprite from the games" class="sprite-image" src="{{ pokemon.sprite.url }}">
+                                <figcaption>
+                                    <span class="tiny-text">No.</span> {{ pokemon.pokedex_id }}
+                                </figcaption>
+                            </figure>
+                            <div id="vitals">
+                                <p>{{ pokemon.name }}</p>
+                                <p>HT <span class="bold-stats">{{ pokemon.height }}</span></p>
+                                <p>WT <b>{{ pokemon.weight }}</p>
+                            </div>
+                        </section>
+                        <div id="boxes">
+                            <div id="box-group-left">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div id="box-group-right">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                        </div>
+                        <hr>
+                        <section id="pokemon-description">
+                            <p>{{ pokemon_desc }}</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

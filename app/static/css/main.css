@@ -1,0 +1,19 @@
+
+
+#basic-info-border {
+    border: 3px solid #767676;
+    border-radius: .2em;
+    border-top-left-radius: 0.2em;
+    border-top-right-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+    border-bottom-left-radius: 0.2em;
+    margin: 1em 0;
+}
+
+#pokemon-info-container {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
