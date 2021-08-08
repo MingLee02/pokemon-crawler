@@ -73,5 +73,4 @@ class Command(BaseCommand):
     help = 'obtain pokemon'
 
     def handle(self, *args, **options):
-        base_url = "https://pokeapi.co/api/v2/pokemon/"
         obtain_pokemon()

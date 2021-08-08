@@ -2,44 +2,79 @@
 {% load static  %}
 
 {% block content %}
-    <div class="container">
-        <div id="pokemon-info-container">
-            <div id="basic-info-component">
-                <button id="toggle-arrows">&gt;&gt;</button>
-                <div id="basic-info-border">
-                    <div id="basic-info-container">
-                        <section id="top-section-container">
-                            <figure id="sprite-container">
-                                <img alt="Pokemon sprite from the games" class="sprite-image" src="{{ pokemon.sprite.url }}">
-                                <figcaption>
-                                    <span class="tiny-text">No.</span> {{ pokemon.pokedex_id }}
-                                </figcaption>
-                            </figure>
-                            <div id="vitals">
-                                <p>{{ pokemon.name }}</p>
-                                <p>HT <span class="bold-stats">{{ pokemon.height }}</span></p>
-                                <p>WT <b>{{ pokemon.weight }}</p>
+    <input type=button value="Previous Page" onClick="javascript:history.go(-1);">
+
+    <div class="pokemon-wrapper">
+        <div id="basic-info-border">
+            <div id="basic-info-container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <figure>
+                            <img alt="Pokemon sprite from the games" class="sprite-image" src="{{ pokemon.sprite.url }}">
+                            <figcaption style="text-align: center;">
+                                <span class="tiny-text">No.</span> {{ pokemon.pokedex_id }}
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-sm-6">
+                        <div style="margin-top: 55px">
+                            <p>{{ pokemon.name|upper }}</p>
+                            <p>HT <span class="ml-2">{{ pokemon.height }}m</span></p>
+                            <p>WT <span class="ml-2">{{ pokemon.weight }}kg</span></p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <section id="pokemon-description">
+                        <p>{{ pokemon_desc }}</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div id="basic-info-container">
+            <div id="basic-info-container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <figure>
+                            <img alt="Pokemon sprite from the games" class="sprite-image" src="{{ pokemon.sprite.url }}">
+                            <figcaption style="text-align: center;">
+                                <span class="tiny-text">No.</span> {{ pokemon.pokedex_id }}
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-sm-6">
+                        <div style="margin-top: 55px">
+                            <p>{{ pokemon.name|upper }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="basic-stats-box">
+                            <p class="left-align">ATTACK</p>
+                            <p class="text-right bold-stats">{{ pokemon.attack }}</p>
+                            <p class="left-align">DEFENSE</p>
+                            <p class="text-right bold-stats">{{ pokemon.defence }}</p>
+                            <p class="left-align">SPEED</p>
+                            <p class="text-right bold-stats">{{ pokemon.speed }}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="type-panel">
+                            <div>
+                                <p>TYPE<span class="tiny-text">1</span>/</p>
+                                <p class="indented">{{ pokemon.type_one }}</p>
                             </div>
-                        </section>
-                        <div id="boxes">
-                            <div id="box-group-left">
-                                <div class="box"></div>
-                                <div class="box"></div>
-                                <div class="box"></div>
-                                <div class="box"></div>
-                            </div>
-                            <div id="box-group-right">
-                                <div class="box"></div>
-                                <div class="box"></div>
-                                <div class="box"></div>
-                                <div class="box"></div>
+                            <div>
+                                <p>TYPE<span class="tiny-text">2</span>/</p>
+                                <p class="indented">{{ pokemon.type_two }}</p></div>
                             </div>
                         </div>
-                        <hr>
-                        <section id="pokemon-description">
-                            <p>{{ pokemon_desc }}</p>
-                        </section>
                     </div>
+                
                 </div>
             </div>
         </div>
