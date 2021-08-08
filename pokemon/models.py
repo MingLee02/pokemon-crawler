@@ -17,12 +17,17 @@ class pokemon(models.Model):
     defence = models.CharField(max_length=255) 
     speed = models.CharField(max_length=255)
 
-
+    def __str__(self):
+        return self.name
+        
 class pokedexVersion(models.Model):
     name = models.CharField(
         max_length=255,
         unique=True,
     )
+    
+    def __str__(self):
+        return self.name
 
 
 class pokemonVersionDescription(models.Model):
