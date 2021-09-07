@@ -10,6 +10,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(
         '',
+        views.HomeView.as_view(),
+        name='home'
+    ),
+    path(
+        'pokemon-list/<int:version_id>',
         views.PokemonListView.as_view(),
         name='pokemon-list'
     ),

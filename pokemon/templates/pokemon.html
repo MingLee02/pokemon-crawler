@@ -2,9 +2,9 @@
 {% load static  %}
 
 {% block content %}
-    <a href="{% url 'pokemon-list' %}"><< Pokedex</a>
 
     <div class="pokemon-wrapper">
+        <a href="{% url 'pokemon-list' pokedex_version %}"><< Pokedex</a>
         <button id="toggle-pokemon-screen" class="mb-4">>></button>
         <div id="basic-info-border" class="page-1">
             <div id="basic-info-container">
