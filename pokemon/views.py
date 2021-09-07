@@ -1,3 +1,5 @@
+import re
+
 from django.views.generic import DetailView, ListView
 
 from pokemon.models import pokemon, pokemonVersionDescription
@@ -9,7 +11,7 @@ class PokemonListView(ListView):
     context_object_name = 'pokemon'
 
     def get_queryset(self):
-        queryset = pokemon.objects.filter(pokemonversiondescription__version__name='blue')
+        queryset = pokemon.objects.filter(pokemonversiondescription__version__name='blue').order_by('id')
      
         return queryset
 
@@ -21,7 +23,7 @@ class PokemonDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['pokemon_desc'] = self.object.pokemonversiondescription_set.filter(version__name='blue').first().description
-
+        context['pokemon_desc'] = re.sub(r'[^\w.]', ' ', self.object.pokemonversiondescription_set.filter(version__name='blue').first().description)
+        
         return context
 

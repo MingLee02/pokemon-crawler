@@ -35,3 +35,6 @@ class pokemonVersionDescription(models.Model):
     pokemon = models.ForeignKey(pokemon, on_delete=models.CASCADE)
     version = models.ForeignKey(pokedexVersion, on_delete=models.CASCADE)
     description = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return "{}: {}".format(self.version.name, self.pokemon.name)
