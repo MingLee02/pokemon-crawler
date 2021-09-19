@@ -32,7 +32,7 @@ class PokemonListView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['dex_version'] = pokedexVersion.objects.get(id=self.kwargs.get('version_id')).name
+        context['dex_version'] = pokedexVersion.objects.get(id=self.kwargs.get('version_id'))
         return context
 
 
@@ -42,9 +42,10 @@ class PokemonDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        selected_pokemon = self.object.pokemonversiondescription_set.filter(version__name='blue').first()
+        version = pokedexVersion.objects.get(id=self.kwargs.get('version_id'))
+        selected_pokemon = self.object.pokemonversiondescription_set.filter(version__name=version.name).first()
 
-        context['pokedex_version'] = selected_pokemon.version.id
+        context['pokedex_version'] = version.id
         context['pokemon_desc'] = re.sub(r'[^\w.]', ' ', selected_pokemon.description)
         
         return context

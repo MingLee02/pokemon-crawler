@@ -9,7 +9,10 @@ from pokemon.management.commands.command_utils import checkUrl
 
 def create_pokemon_entry(record):
     pokemon_obj , _ = pokemon.objects.get_or_create(
-        pokedex_id=record.get('id')
+        pokedex_id=record.get('id'),
+        name=record.get('name'),
+        weight=record.get('weight'),
+        height = record.get('height')
     )
     pokemon_types = record.get('types')
 
@@ -18,13 +21,10 @@ def create_pokemon_entry(record):
     data =  ContentFile(image_response.content)
     stats = record.get('stats')
 
-    pokemon_obj.name = record.get('name')
     pokemon_obj.type_one = pokemon_types[0]['type']['name']
     if len(pokemon_types) == 2:
         pokemon_obj.type_two = pokemon_types[1].get('type').get('name', None)
     pokemon_obj.sprite.save(record.get('name'), data)
-    pokemon_obj.weight = record.get('weight')
-    pokemon_obj.height = record.get('height')
     pokemon_obj.health_points = stats[0]['base_stat']
     pokemon_obj.attack = stats[1]['base_stat']
     pokemon_obj.defence = stats[2]['base_stat']
@@ -34,7 +34,7 @@ def create_pokemon_entry(record):
     return pokemon_obj
 
 
-def obtain_pokemon(version='blue', start='scratch', limit=10):
+def obtain_pokemon(version='yellow', start='scratch', limit=10):
     version = pokedexVersion.objects.filter(name=version)
     skipped = False
     pokemon_scraped = []

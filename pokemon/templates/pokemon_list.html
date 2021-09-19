@@ -4,8 +4,9 @@
 {% block content %}
     <div class="container">
         <h1 class="text-black mt-2">
-            {{ dex_version|title }} Pokedex
+            {{ dex_version.name|title }} Pokedex
         </h1>
+        <a href="{% url 'home' %}"><< Home</a>
         <table class="table mt-5">
             <thead>
               <tr>
@@ -22,7 +23,7 @@
                             {{ pokemon.name|title }}
                         </td>
                         <td>
-                            <a href="{% url 'pokemon_details' pokemon.pk %}">Details</a>
+                            <a href="{% url 'pokemon_details' dex_version.id pokemon.pk %}">Details</a>
                         </td>
                     </tr>
                 {% empty %}

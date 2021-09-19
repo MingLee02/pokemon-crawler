@@ -18,7 +18,7 @@ urlpatterns = [
         views.PokemonListView.as_view(),
         name='pokemon-list'
     ),
-    path("pokemon/<int:pk>", views.PokemonDetailView.as_view(), name="pokemon_details"),
+    path("pokemon/<int:version_id>/<int:pk>", views.PokemonDetailView.as_view(), name="pokemon_details"),
 ]
 
 

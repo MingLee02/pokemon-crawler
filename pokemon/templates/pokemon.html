@@ -4,6 +4,7 @@
 {% block content %}
 
     <div class="pokemon-wrapper">
+        <a href="{% url 'home' %}" class="mr-3"><< Home</a>
         <a href="{% url 'pokemon-list' pokedex_version %}"><< Pokedex</a>
         <button id="toggle-pokemon-screen" class="mb-4">>></button>
         <div id="basic-info-border" class="page-1">
@@ -33,7 +34,6 @@
                 </div>
             </div>
         </div>
-
         <div class="page-2 d-none">
             <div class="row">
                 <div class="col-sm-6">
@@ -45,7 +45,7 @@
                     </figure>
                 </div>
                 <div class="col-sm-6">
-                    <div id="status-panel">
+                    <div id="status-panel" style="margin-top: 55px">
                         <p>{{ pokemon.name|upper }}</p>
                     </div>
                 </div>
@@ -55,11 +55,11 @@
                 <div class="col-sm-6">
                     <div id="basic-stats-box">
                         <p class="left-align mb-0">ATTACK</p>
-                        <p class="text-right bold-stats">{{ pokemon.attack }}</p>
+                        <p class="text-right mb-0 bold-stats">{{ pokemon.attack }}</p>
                         <p class="left-align mb-0">DEFENSE</p>
-                        <p class="text-right bold-stats">{{ pokemon.defence }}</p>
+                        <p class="text-right mb-0 bold-stats">{{ pokemon.defence }}</p>
                         <p class="left-align mb-0">SPEED</p>
-                        <p class="text-right bold-stats">{{ pokemon.speed }}</p>
+                        <p class="text-right mb-0 bold-stats">{{ pokemon.speed }}</p>
                     </div>
                 </div>
                 <div class="col-sm-6">
